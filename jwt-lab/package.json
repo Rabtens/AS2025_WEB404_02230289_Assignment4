@@ -1,0 +1,23 @@
+{
+  "name": "jwt-lab",
+  "version": "1.0.0",
+  "description": "A self-contained teaching lab: build a JWT auth system, attack a deliberately vulnerable version, then secure it against those same attacks.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node vulnerable/server.js",
+    "start:vuln": "node vulnerable/server.js",
+    "start:secure": "node secure/server.js",
+    "attack:all": "for f in attacks/0*.js; do echo \"\\n===== $f =====\"; node \"$f\"; done",
+    "genkeys": "openssl genpkey -algorithm RSA -out keys/private.pem -pkeyopt rsa_keygen_bits:2048 && openssl rsa -in keys/private.pem -pubout -out keys/public.pem"
+  },
+  "keywords": ["jwt", "security", "education", "authentication"],
+  "author": "02230289.cst@rub.edu.bt",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
